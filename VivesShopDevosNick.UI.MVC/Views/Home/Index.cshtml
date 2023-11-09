@@ -8,16 +8,6 @@
 </div>
 @foreach (var p in Model ?? Enumerable.Empty<Product>())
 {
-        <div class="card card-outline-primary m-1 p-1">
-            <div class="bg-faded p-1">
-                <h4>
-                    @p.Name
-                    <span class="badge rounded-pill bg-primary tewt-black"
-                          style="float:right">
-                        <small>&euro;@p.Price.ToString("0.00")</small>
-                    </span>
-                </h4>
-            </div>
-        </div>
+        <partial name="ProductSummary" model="p" />
 }
 
