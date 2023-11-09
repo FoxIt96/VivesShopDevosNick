@@ -1,9 +1,23 @@
-﻿@{
+﻿@model IQueryable<Product>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to VivesShop</h1>
 </div>
+@foreach (var p in Model ?? Enumerable.Empty<Product>())
+{
+        <div class="card card-outline-primary m-1 p-1">
+            <div class="bg-faded p-1">
+                <h4>
+                    @p.Name
+                    <span class="badge rounded-pill bg-primary tewt-black"
+                          style="float:right">
+                        <small>&euro;@p.Price.ToString("0.00")</small>
+                    </span>
+                </h4>
+            </div>
+        </div>
+}
 
