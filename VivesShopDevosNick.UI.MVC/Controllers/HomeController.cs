@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using VivesShopDevosNick.UI.MVC.Models;
 
 namespace VivesShopDevosNick.UI.MVC.Controllers;
@@ -8,13 +9,16 @@ public class HomeController : Controller
 {
     private IStoreRepository repository;
 
-    public HomeController(IStoreRepository repo)
+
+    public HomeController(IStoreRepository repo, Cart cart)
     {
         repository = repo;
+ 
     }
  
     public IActionResult Index()
     {
+     
         return View(repository.Products);
     }
 
@@ -23,5 +27,6 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
 }
 

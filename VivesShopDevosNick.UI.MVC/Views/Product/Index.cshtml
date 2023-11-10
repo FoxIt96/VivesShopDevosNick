@@ -1,0 +1,24 @@
+﻿@model IList<Product>
+@{
+    ViewData["Title"] = "Manage";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary" asp-action="Create">New Product</a>
+
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <partial name="ProductPartial" model="product" />
+        }
+    </tbody>
+</table>

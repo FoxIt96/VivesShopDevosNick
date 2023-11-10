@@ -1,4 +1,5 @@
-﻿using VivesShopDevosNick.UI.MVC.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using VivesShopDevosNick.UI.MVC.Core;
 using VivesShopDevosNick.UI.MVC.Models;
 
 
@@ -13,6 +14,7 @@ namespace VivesShopDevosNick.UI.MVC.Models
 			context = ctx;
 		}
         public IQueryable<Product> Products => context.Products;
-	}
+      
+    }
 }
 
