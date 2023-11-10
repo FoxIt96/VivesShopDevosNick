@@ -1,0 +1,39 @@
+﻿@model Order
+
+<h2>Check out</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="Checkout" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control">
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control">
+        <span asp-validation-for="Address"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Zip" class="form-label"></label>
+        <input asp-for="Zip" class="form-control">
+        <span asp-validation-for="Zip"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="City" class="form-label"></label>
+        <input asp-for="City" class="form-control">
+        <span asp-validation-for="City"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Country" class="form-label"></label>
+        <input asp-for="Country" class="form-control">
+        <span asp-validation-for="Country"></span>
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Complete Order"/>
+    </div>
+</form>

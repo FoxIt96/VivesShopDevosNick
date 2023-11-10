@@ -21,7 +21,5 @@
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Infrastructure\" />
-    <Folder Include="Pages\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
 </Project>

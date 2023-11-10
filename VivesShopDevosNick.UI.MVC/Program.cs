@@ -11,6 +11,7 @@ builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseInMemoryDatabase(nameof(StoreDbContext));
 });
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
+builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
