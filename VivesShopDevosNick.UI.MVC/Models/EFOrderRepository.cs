@@ -1,9 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// EFOrderRepository.cs
+
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using VivesShopDevosNick.UI.MVC.Core;
 
 namespace VivesShopDevosNick.UI.MVC.Models
 {
-    public class EFOrderRepository:IOrderRepository
+    public class EFOrderRepository : IOrderRepository
     {
         private StoreDbContext context;
 
@@ -22,6 +25,12 @@ namespace VivesShopDevosNick.UI.MVC.Models
                 context.Orders.Add(order);
             }
             context.SaveChanges();
+        }
+
+        // Implementeer de GetOrderById-methode
+        public Order GetOrderById(int orderId)
+        {
+            return context.Orders.FirstOrDefault(o => o.OrderID == orderId);
         }
     }
 }

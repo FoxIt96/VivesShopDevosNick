@@ -1,0 +1,49 @@
+﻿@page
+@using VivesShopDevosNick.UI.MVC.Models
+@using VivesShopDevosNick.UI.MVC.Infrastructure
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@model CartModel
+
+<h2>Your cart</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Quantity</th>
+        <th>Item</th>
+        <th class="text-right">Price</th>
+        <th class="text-right">Total</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model?.Cart?.Items ?? Enumerable.Empty<CartItem>())
+    {
+        <tr>
+            <td class="text-center">@item.Quantity</td>
+            <td class="text-left">@item.Product.Name</td>
+            <td class="text-right">&euro;@item.Product.Price.ToString("0.00")</td>
+            <td class="text-right">&euro;@((item.Quantity * item.Product.Price).ToString("0.00"))</td>
+            <td class="text-center">
+                <form asp-page-handler="Remove" method="post">
+                    <input type="hidden" name="ProductID" value="@item.Product.ProductID" />
+                    <input type="hidden" name="returnUrl" value="@Model?.ReturnUrl" />
+                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" class="text-right">Total:</td>
+        <td class="text-right">@Model?.Cart?.CalculateTotalPrice().ToString("0.00")</td>
+        <td class="text-center">
+            <form asp-action="Checkout" asp-controller="Order" method="post">
+                <input type="hidden" name="returnUrl" value="@Model?.ReturnUrl" />
+                <button type="submit" class="btn btn-primary btn-sm">Checkout</button>
+            </form>
+        </td>
+    </tr>
+    </tfoot>
+</table>

@@ -38,7 +38,7 @@ namespace VivesShopDevosNick.UI.MVC.Models
             [Display(Name = "Country")]
             public string? Country { get; set; }
 
-
+        
 
     }
 	

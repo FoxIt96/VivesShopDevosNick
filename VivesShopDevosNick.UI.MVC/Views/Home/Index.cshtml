@@ -1,14 +1,49 @@
-﻿@model IQueryable<Product>
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model VivesShopDevosNick.UI.MVC.Models.ProductViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to VivesShop</h1>
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to VivesShop</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Products</h2>
+            <div class="row">
+                @if (Model.Products != null)
+                {
+                    foreach (var product in Model.Products)
+                    {
+                        <div class="col-md-6">
+                            <partial name="ProductSummary" model="product" />
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="mb-3">Your Cart</h2>
+            <ul>
+                @if (Model.Cart != null && Model.Cart.GetItems() != null)
+                {
+                    foreach (var item in Model?.Cart?.Items ?? Enumerable.Empty<CartItem>())
+                    {
+                        <partial name="_CartItemPartial" model="item" />
+                    }
+                }
+            </ul>
+
+            @if (Model.Cart != null && Model.Cart.GetItems() != null && Model.Cart.GetItems().Any())
+            {
+                <p class="mt-3">Total Price: &euro;@Model.Cart?.CalculateTotalPrice().ToString("0.00")</p>
+
+                <div class="text-center mt-3">
+                    <form asp-action="Checkout" asp-controller="Order" method="post" novalidate>
+                        <input type="hidden" name="returnUrl" value="@Model?.ReturnUrl" />
+                        <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
 </div>
-
-
-@foreach (var p in Model ?? Enumerable.Empty<Product>())
-{
-    <partial name="ProductSummary" model="p" />
-}

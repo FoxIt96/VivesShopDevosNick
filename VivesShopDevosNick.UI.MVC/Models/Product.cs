@@ -13,5 +13,7 @@ namespace VivesShopDevosNick.UI.MVC.Models
         [Required]
         [Display(Name = "price")]
         public double Price { get; set; }
+        [Display(Name = "quantity")]
+        public int Quantity { get; set; } = 0;
     }
 }
