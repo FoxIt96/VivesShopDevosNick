@@ -1,6 +1,4 @@
-﻿// IOrderRepository.cs
-
-using System.Linq;
+﻿using System.Linq;
 
 namespace VivesShopDevosNick.UI.MVC.Models
 {

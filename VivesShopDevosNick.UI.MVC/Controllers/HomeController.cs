@@ -1,5 +1,4 @@
-﻿// HomeController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using VivesShopDevosNick.UI.MVC.Infrastructure;
 using VivesShopDevosNick.UI.MVC.Models;

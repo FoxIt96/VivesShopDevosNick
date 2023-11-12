@@ -1,6 +1,4 @@
-﻿// EFOrderRepository.cs
-
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using VivesShopDevosNick.UI.MVC.Core;
 
@@ -27,7 +25,6 @@ namespace VivesShopDevosNick.UI.MVC.Models
             context.SaveChanges();
         }
 
-        // Implementeer de GetOrderById-methode
         public Order GetOrderById(int orderId)
         {
             return context.Orders.FirstOrDefault(o => o.OrderID == orderId);

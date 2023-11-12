@@ -1,5 +1,3 @@
-// CartModel
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using VivesShopDevosNick.UI.MVC.Models;

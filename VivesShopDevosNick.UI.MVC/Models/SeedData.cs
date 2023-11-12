@@ -13,8 +13,6 @@ namespace VivesShopDevosNick.UI.MVC.Models
             {
                 StoreDbContext context = scope.ServiceProvider.GetRequiredService<StoreDbContext>();
 
-                // Migratie niet nodig voor in-memory database
-
                 if (!context.Products.Any())
                 {
                     context.Products.AddRange(

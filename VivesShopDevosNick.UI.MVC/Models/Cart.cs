@@ -31,7 +31,6 @@ namespace VivesShopDevosNick.UI.MVC.Models
 
         public virtual void Clear() => Items.Clear();
 
-        // Add this method to allow enumeration of Cart items
         public IEnumerable<CartItem> GetItems() => Items;
     }
 }
