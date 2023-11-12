@@ -1,40 +1,81 @@
 ﻿@model Order
 
-<h2>Check out</h2>
-<div asp-validation-summary="All" class="text-danger"></div>
-<form asp-action="Checkout" method="post">
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control">
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
-        <input asp-for="Email" class="form-control">
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Address" class="form-label"></label>
-        <input asp-for="Address" class="form-control">
-        <span asp-validation-for="Address"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Zip" class="form-label"></label>
-        <input asp-for="Zip" class="form-control">
-        <span asp-validation-for="Zip"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="City" class="form-label"></label>
-        <input asp-for="City" class="form-control">
-        <span asp-validation-for="City"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Country" class="form-label"></label>
-        <input asp-for="Country" class="form-control">
-        <span asp-validation-for="Country"></span>
+<div class="container mt-5">
+    <h2>Check out</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Shopping Cart</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Product.Price</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        <p>Total Price: &euro; @Model.Items.Sum(item => item.Product.Price * item.Quantity)</p>
     </div>
 
-    <div class="text-center">
-        <input class="btn btn-primary" type="submit" value="Complete Order"/>
+        <div class="col-md-6">
+            <h3>Customer Information</h3>
+            <form asp-action="Checkout" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Address</label>
+                    <input asp-for="Address" class="form-control">
+                    <span asp-validation-for="Address"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Zip" class="form-label">Zip</label>
+                    <input asp-for="Zip" class="form-control">
+                    <span asp-validation-for="Zip"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label">City</label>
+                    <input asp-for="City" class="form-control">
+                    <span asp-validation-for="City"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Country" class="form-label">Country</label>
+                    <input asp-for="Country" class="form-control">
+                    <span asp-validation-for="Country"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="PaymentMethod" class="form-label">Payment Method</label>
+                    <select asp-for="PaymentMethod" class="form-select">
+                        <option value="Bancontact">Bancontact</option>
+                        <option value="CreditCard">Credit Card</option>
+                        <option value="PayPal">PayPal</option>
+                    </select>
+                    <span asp-validation-for="PaymentMethod"></span>
+                </div>
+
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Complete Order"/>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
